@@ -1,0 +1,193 @@
+.timeline-section {
+  padding: 6rem 0;
+  position: relative;
+  z-index: 2;
+}
+
+.timeline-header {
+  text-align: center;
+  max-width: 650px;
+  margin: 0 auto 5rem;
+}
+
+.timeline-badge {
+  display: inline-block;
+  padding: 0.4rem 1.2rem;
+  border-radius: 9999px;
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid var(--border-glass);
+  color: var(--text-gold);
+  font-size: 0.88rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.timeline-title {
+  font-size: 2.2rem;
+  margin-bottom: 0.85rem;
+  line-height: 1.2;
+}
+
+@media (min-width: 768px) {
+  .timeline-title {
+    font-size: 2.8rem;
+  }
+}
+
+.timeline-subtitle {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+}
+
+/* Container */
+.timeline-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.central-sun-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: linear-gradient(180deg, rgba(245, 158, 11, 0.1) 0%, rgba(245, 158, 11, 0.5) 50%, rgba(245, 158, 11, 0.1) 100%);
+  transform: translateX(-50%);
+  display: none;
+}
+
+@media (min-width: 840px) {
+  .central-sun-line {
+    display: block;
+  }
+}
+
+/* Item */
+.timeline-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.timeline-item.bloomed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (min-width: 840px) {
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .timeline-item.reverse .sunflower-node-wrap {
+    order: 2;
+  }
+  .timeline-item.reverse .timeline-card {
+    order: 1;
+  }
+}
+
+/* SVG Node */
+.sunflower-node-wrap {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.sunflower-mini-stage {
+  width: 160px;
+  height: 200px;
+  filter: drop-shadow(0 10px 25px rgba(245, 158, 11, 0.25));
+}
+
+.mini-sunflower-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.mini-stem {
+  stroke-dasharray: 180;
+  stroke-dashoffset: 180;
+  transition: stroke-dashoffset 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mini-stem.grow {
+  stroke-dashoffset: 0;
+}
+
+.mini-leaf {
+  transform-origin: 0 0;
+  transform: scale(0);
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.4s;
+}
+
+.mini-leaf.unfurl {
+  transform: scale(1);
+}
+
+.mini-head {
+  transform-origin: 0 0;
+  transform: scale(0) rotate(-30deg);
+  transition: transform 0.9s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.6s;
+}
+
+.mini-head.bloom {
+  transform: scale(1) rotate(0deg);
+  animation: subtleFloat 5s ease-in-out infinite alternate;
+}
+
+@keyframes subtleFloat {
+  0% { transform: scale(1) rotate(-2deg); }
+  100% { transform: scale(1) rotate(2deg); }
+}
+
+/* Card */
+.timeline-card {
+  padding: 2.25rem;
+  width: 100%;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.timeline-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 25px 60px rgba(245, 158, 11, 0.18);
+  border-color: rgba(245, 158, 11, 0.4);
+}
+
+.card-tag {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--sun-gold);
+  margin-bottom: 0.5rem;
+}
+
+.card-heading {
+  font-size: 1.5rem;
+  margin-bottom: 0.85rem;
+  color: #ffffff;
+}
+
+.card-message {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.65;
+  margin-bottom: 1.25rem;
+}
+
+.card-handwritten {
+  font-size: 1.45rem;
+  color: #fde68a;
+  border-top: 1px dashed rgba(245, 158, 11, 0.25);
+  padding-top: 0.85rem;
+}

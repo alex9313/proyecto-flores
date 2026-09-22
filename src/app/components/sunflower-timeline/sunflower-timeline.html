@@ -1,0 +1,87 @@
+<section id="sunflower-story" class="timeline-section">
+  <div class="container">
+    <div class="timeline-header">
+      <span class="timeline-badge">🌻 Un Viaje de Flores y Recuerdos</span>
+      <h2 class="timeline-title">Razones por las que iluminas mi mundo</h2>
+      <p class="timeline-subtitle">Cada girasol que florece a continuación guarda una verdad que quiero recordarte siempre.</p>
+    </div>
+
+    <!-- Timeline list -->
+    <div class="timeline-container">
+      <div class="central-sun-line"></div>
+
+      <div 
+        *ngFor="let ch of chapters(); let i = index" 
+        class="timeline-item"
+        [class.bloomed]="ch.bloomed"
+        [class.reverse]="i % 2 !== 0"
+        [attr.data-chapter-id]="ch.id"
+      >
+        <!-- Animated Sunflower node -->
+        <div class="sunflower-node-wrap">
+          <div class="sunflower-mini-stage">
+            <svg viewBox="0 0 160 200" class="mini-sunflower-svg">
+              <defs>
+                <linearGradient [attr.id]="'miniStem' + ch.id" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#14532d" />
+                  <stop offset="100%" stop-color="#16a34a" />
+                </linearGradient>
+                <radialGradient [attr.id]="'miniCenter' + ch.id" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#261204" />
+                  <stop offset="80%" stop-color="#78350f" />
+                  <stop offset="100%" stop-color="#d97706" />
+                </radialGradient>
+              </defs>
+
+              <!-- Stem -->
+              <path 
+                class="mini-stem"
+                [class.grow]="ch.bloomed"
+                d="M 80,200 Q 75,140 80,80" 
+                fill="none" 
+                [attr.stroke]="'url(#miniStem' + ch.id + ')'" 
+                stroke-width="7" 
+                stroke-linecap="round"
+              />
+
+              <!-- Leaves -->
+              <g class="mini-leaf" [class.unfurl]="ch.bloomed" transform="translate(76, 140)">
+                <path d="M 0,0 C -25,-8 -40,-30 -50,-15 C -40,-2 -15,10 0,0" fill="#15803d" />
+              </g>
+
+              <g class="mini-leaf" [class.unfurl]="ch.bloomed" transform="translate(84, 115)">
+                <path d="M 0,0 C 25,-8 40,-30 50,-15 C 40,-2 15,10 0,0" fill="#16a34a" />
+              </g>
+
+              <!-- Flower Head -->
+              <g class="mini-head" [class.bloom]="ch.bloomed" transform="translate(80, 80)">
+                <!-- Petals Layer -->
+                <g *ngFor="let angle of petalAngles" [attr.transform]="'rotate(' + angle + ')'">
+                  <path 
+                    d="M 0,-15 C -7,-28 -7,-52 0,-56 C 7,-52 7,-28 0,-15" 
+                    [attr.fill]="ch.petalsColor" 
+                  />
+                </g>
+
+                <!-- Center Core -->
+                <circle cx="0" cy="0" r="18" [attr.fill]="'url(#miniCenter' + ch.id + ')'" stroke="#f59e0b" stroke-width="1.5" />
+                <circle cx="0" cy="0" r="10" fill="none" stroke="#fcd34d" stroke-width="1" stroke-dasharray="2 2" opacity="0.8" />
+              </g>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Card Content -->
+        <div class="timeline-card glass-panel">
+          <div class="card-tag">{{ ch.badge }}</div>
+          <h3 class="card-heading">{{ ch.title }}</h3>
+          <p class="card-message">{{ ch.message }}</p>
+          
+          <div class="card-handwritten font-hand">
+            <span>❝ {{ ch.handwrittenNote }} ❞</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,89 @@
+<div class="cart-backdrop" [class.active]="flowerService.isCartOpen()" (click)="closeCart()"></div>
+
+<aside class="cart-drawer" [class.open]="flowerService.isCartOpen()">
+  <!-- Header -->
+  <div class="cart-header">
+    <div class="cart-title-wrap">
+      <h3>Tu Carrito Floral</h3>
+      <span class="cart-badge-count">{{ flowerService.totalCartItems() }} items</span>
+    </div>
+    <button class="close-btn" (click)="closeCart()" aria-label="Cerrar Carrito">✕</button>
+  </div>
+
+  <!-- Body -->
+  <div class="cart-body">
+    <!-- Success State -->
+    <div *ngIf="orderCompleted" class="order-success-box">
+      <span class="success-icon">💐✨</span>
+      <h3>¡Pedido Recibido con Éxito!</h3>
+      <p>Nos pondremos en contacto contigo de inmediato para coordinar la entrega y la dedicatoria personalizada.</p>
+      <button class="btn-primary" (click)="resetOrder()">Seguir Explorando</button>
+    </div>
+
+    <!-- Items list -->
+    <div *ngIf="!orderCompleted && flowerService.cart().length > 0" class="cart-items-list">
+      <div class="cart-item-row" *ngFor="let item of flowerService.cart()">
+        <img [src]="item.flower.image" [alt]="item.flower.name" class="item-thumbnail" />
+        
+        <div class="item-details">
+          <h4 class="item-name">{{ item.flower.name }}</h4>
+          <span class="item-unit-price">${{ item.flower.price.toFixed(2) }} c/u</span>
+
+          <div class="item-qty-controls">
+            <button class="qty-btn" (click)="flowerService.updateQuantity(item.flower.id, -1)">-</button>
+            <span class="qty-display">{{ item.quantity }}</span>
+            <button class="qty-btn" (click)="flowerService.updateQuantity(item.flower.id, 1)">+</button>
+          </div>
+        </div>
+
+        <div class="item-total-col">
+          <span class="item-subtotal">${{ (item.flower.price * item.quantity).toFixed(2) }}</span>
+          <button class="delete-btn" (click)="flowerService.removeFromCart(item.flower.id)" title="Eliminar">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="3 6 5 6 21 6"></polyline>
+              <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Empty State -->
+    <div *ngIf="!orderCompleted && flowerService.cart().length === 0" class="cart-empty-box">
+      <span class="empty-icon">🛒</span>
+      <h4>Tu carrito está vacío</h4>
+      <p>Explora nuestras flores de autor y añade alegría a tu día.</p>
+      <button class="btn-outline" (click)="closeCart()">Ver Catálogo</button>
+    </div>
+  </div>
+
+  <!-- Footer with Totals and Checkout -->
+  <div class="cart-footer" *ngIf="!orderCompleted && flowerService.cart().length > 0">
+    <div class="summary-line">
+      <span>Subtotal</span>
+      <span>${{ flowerService.totalCartPrice().toFixed(2) }}</span>
+    </div>
+    <div class="summary-line">
+      <span>Envío</span>
+      <span class="free-shipping-tag">
+        {{ flowerService.totalCartPrice() >= 150 ? '¡GRATIS!' : '$15.00' }}
+      </span>
+    </div>
+    <div class="summary-divider"></div>
+    <div class="summary-total">
+      <span>Total Estimado</span>
+      <span class="total-amount">
+        ${{ (flowerService.totalCartPrice() + (flowerService.totalCartPrice() >= 150 ? 0 : 15)).toFixed(2) }}
+      </span>
+    </div>
+
+    <button 
+      class="btn-primary checkout-btn" 
+      [disabled]="isCheckingOut" 
+      (click)="processCheckout()"
+    >
+      <span *ngIf="!isCheckingOut">Confirmar Pedido por WhatsApp</span>
+      <span *ngIf="isCheckingOut">Procesando pedido... ⏳</span>
+    </button>
+  </div>
+</aside>

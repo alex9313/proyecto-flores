@@ -1,0 +1,69 @@
+<section id="sunflower-letter" class="letter-section">
+  <div class="container letter-container">
+    <div class="letter-intro">
+      <span class="letter-tag">💌 Una Carta Inolvidable</span>
+      <h2 class="letter-main-title">Un mensaje guardado en el corazón</h2>
+      <p class="letter-sub">Toca el sobre sellado con cera dorada para abrir tu carta.</p>
+    </div>
+
+    <!-- Interactive Envelope / Letter Container -->
+    <div class="envelope-wrapper">
+      
+      <!-- Envelope Closed State -->
+      <div 
+        class="envelope-card glass-panel" 
+        [class.opened]="isOpen()"
+        (click)="!isOpen() ? openLetter() : null"
+      >
+        <div class="envelope-flap" *ngIf="!isOpen()">
+          <div class="wax-seal" (click)="openLetter()">
+            <span class="seal-icon">🌻</span>
+          </div>
+        </div>
+
+        <div class="envelope-front-content" *ngIf="!isOpen()">
+          <span class="envelope-to-label">Para:</span>
+          <h3 class="envelope-recipient font-hand">{{ recipientName }}</h3>
+          <p class="envelope-hint">✨ Toca para romper el sello y leer ✨</p>
+        </div>
+
+        <!-- Unfolded Letter Parchment (Visible when opened) -->
+        <div class="letter-parchment" [class.show]="isOpen()">
+          <div class="parchment-top-decor">
+            <span class="decor-flower">🌻</span>
+            <div class="decor-line"></div>
+            <span class="decor-flower">🌻</span>
+          </div>
+
+          <div class="parchment-content">
+            <h3 class="parchment-salute font-hand">Para {{ recipientName }},</h3>
+            
+            <p class="parchment-body font-hand">
+              {{ letterMessage }}
+            </p>
+
+            <div class="parchment-signature font-hand">
+              <span>{{ signature }}</span>
+              <span class="sig-flower">🌻💛</span>
+            </div>
+          </div>
+
+          <!-- Bottom Action within Letter -->
+          <div class="parchment-actions">
+            <button class="close-letter-btn" (click)="closeLetter($event)">
+              Cerrar Carta ✉️
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Final Romantic Footer Quote -->
+    <div class="letter-footer-quote">
+      <p class="final-words font-hand">
+        "Donde hay girasoles, siempre hay luz. Y donde estás tú, siempre hay felicidad."
+      </p>
+      <span class="final-flower-symbol">🌻 ✨ 🌻</span>
+    </div>
+  </div>
+</section>

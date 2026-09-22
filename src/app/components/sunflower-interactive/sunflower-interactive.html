@@ -1,0 +1,71 @@
+<section id="interactive-garden" class="interactive-section">
+  <div class="container">
+    <div class="interactive-header">
+      <span class="garden-tag">🌻 Jardín Mágico Interactivo</span>
+      <h2 class="garden-title">Toca la pantalla y siembra un girasol</h2>
+      <p class="garden-subtitle">Haz clic o toca en cualquier punto del lienzo para ver nacer un girasol con una dedicatoria especial.</p>
+
+      <div class="garden-action-bar">
+        <div class="counter-badge">
+          <span>🌻 Girasoles sembrados:</span>
+          <strong>{{ totalPlanted() }}</strong>
+        </div>
+
+        <button class="btn-golden" (click)="bloomBouquetExplosion()">
+          <span>¡Hacer florecer un campo! ✨</span>
+        </button>
+
+        <button *ngIf="plantedFlowers().length > 0" class="clear-garden-btn" (click)="clearGarden()">
+          Limpiar jardín ✕
+        </button>
+      </div>
+    </div>
+
+    <!-- Garden Interactive Canvas -->
+    <div 
+      #gardenCanvas 
+      class="garden-surface glass-panel" 
+      (click)="onGardenClick($event)"
+    >
+      <div *ngIf="plantedFlowers().length === 0" class="hint-pulse">
+        <span>✨ Toca o haz clic aquí para florecer ✨</span>
+      </div>
+
+      <!-- Spawned Flowers -->
+      <div 
+        *ngFor="let flower of plantedFlowers()" 
+        class="spawned-flower"
+        [style.left.px]="flower.x"
+        [style.top.px]="flower.y"
+        [style.width.px]="flower.size"
+        [style.height.px]="flower.size"
+        [style.transform]="'translate(-50%, -50%) rotate(' + flower.rotation + 'deg)'"
+      >
+        <!-- Mini SVG flower with bloom pop animation -->
+        <svg viewBox="0 0 100 100" class="spawned-svg">
+          <defs>
+            <radialGradient [attr.id]="'spawnCenter' + flower.id" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#2d1303" />
+              <stop offset="70%" stop-color="#78350f" />
+              <stop offset="100%" stop-color="#d97706" />
+            </radialGradient>
+          </defs>
+
+          <!-- 12 Petals around -->
+          <g transform="translate(50, 50)">
+            <g *ngFor="let angle of [0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330]" [attr.transform]="'rotate(' + angle + ')'">
+              <path d="M 0,-10 C -4,-20 -4,-38 0,-42 C 4,-38 4,-20 0,-10" fill="#fbbf24" stroke="#d97706" stroke-width="0.5" />
+            </g>
+            <circle cx="0" cy="0" r="14" [attr.fill]="'url(#spawnCenter' + flower.id + ')'" stroke="#f59e0b" stroke-width="1" />
+            <circle cx="0" cy="0" r="8" fill="none" stroke="#fef08a" stroke-width="0.8" stroke-dasharray="1.5 1.5" opacity="0.8" />
+          </g>
+        </svg>
+
+        <!-- Floating Message note -->
+        <div class="floating-note font-hand">
+          {{ flower.message }}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,90 @@
+<header class="navbar-wrapper">
+  <div class="top-announcement">
+    <div class="container announcement-content">
+      <span>✨ <strong>Entrega Gratis</strong> en pedidos superiores a $150 | Flores frescas del día garantizadas 🌹</span>
+      <div class="announcement-contact">
+        <span>📞 Pedidos WhatsApp: +51 987 654 321</span>
+      </div>
+    </div>
+  </div>
+
+  <nav class="main-navbar">
+    <div class="container navbar-content">
+      <!-- Brand Logo -->
+      <a href="#" class="brand-logo" (click)="scrollToSection('hero')">
+        <span class="logo-icon">🌸</span>
+        <div class="brand-text">
+          <span class="brand-name">BellaRosa</span>
+          <span class="brand-sub">Atelier Floral</span>
+        </div>
+      </a>
+
+      <!-- Search bar -->
+      <div class="search-box">
+        <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input 
+          type="text" 
+          placeholder="Buscar rosas, orquídeas, bouquets..." 
+          [(ngModel)]="searchInput"
+          (input)="onSearchChange()"
+        />
+        <button *ngIf="searchInput" class="clear-search-btn" (click)="searchInput = ''; onSearchChange()">✕</button>
+      </div>
+
+      <!-- Nav Links Desktop -->
+      <div class="nav-links">
+        <a href="#hero" (click)="scrollToSection('hero')" class="nav-link">Inicio</a>
+        <a href="#catalog" (click)="scrollToSection('catalog')" class="nav-link">Catálogo</a>
+        <a href="#features" (click)="scrollToSection('features')" class="nav-link">Beneficios</a>
+        <a href="#contact" (click)="scrollToSection('contact')" class="nav-link">Contacto</a>
+      </div>
+
+      <!-- Action items -->
+      <div class="nav-actions">
+        <!-- Cart button -->
+        <button class="cart-btn" (click)="flowerService.toggleCart(true)" aria-label="Abrir Carrito">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          <span class="cart-count" *ngIf="flowerService.totalCartItems() > 0">
+            {{ flowerService.totalCartItems() }}
+          </span>
+        </button>
+
+        <!-- CTA Direct Order -->
+        <button class="btn-primary direct-cta" (click)="scrollToSection('catalog')">
+          <span>Ver Ramos</span>
+          <span>→</span>
+        </button>
+
+        <!-- Mobile hamburger -->
+        <button class="mobile-toggle" (click)="toggleMobileMenu()" aria-label="Menu">
+          <span class="bar" [class.open]="isMobileMenuOpen"></span>
+          <span class="bar" [class.open]="isMobileMenuOpen"></span>
+          <span class="bar" [class.open]="isMobileMenuOpen"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Navigation -->
+    <div class="mobile-menu" [class.is-open]="isMobileMenuOpen">
+      <div class="mobile-search">
+        <input 
+          type="text" 
+          placeholder="Buscar flores..." 
+          [(ngModel)]="searchInput"
+          (input)="onSearchChange()"
+        />
+      </div>
+      <a href="#hero" (click)="scrollToSection('hero')" class="mobile-link">🌸 Inicio</a>
+      <a href="#catalog" (click)="scrollToSection('catalog')" class="mobile-link">💐 Catálogo Floral</a>
+      <a href="#features" (click)="scrollToSection('features')" class="mobile-link">✨ Beneficios & Envíos</a>
+      <a href="#contact" (click)="scrollToSection('contact')" class="mobile-link">📞 Contacto & WhatsApp</a>
+    </div>
+  </nav>
+</header>

@@ -1,0 +1,199 @@
+.contact-section {
+  padding: 5rem 0;
+  background: linear-gradient(180deg, var(--bg-main) 0%, #ffffff 100%);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3.5rem;
+}
+
+@media (min-width: 960px) {
+  .contact-grid {
+    grid-template-columns: 1fr 1fr;
+    align-items: flex-start;
+  }
+}
+
+.contact-title {
+  font-size: 2.25rem;
+  margin-bottom: 1rem;
+}
+
+.contact-description {
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.contact-methods {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+
+.method-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.method-icon-wrap {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  background: var(--primary-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+.method-item strong {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--secondary);
+}
+
+.method-item span {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Newsletter */
+.newsletter-card {
+  background: var(--secondary-bg);
+  border: 1px solid var(--border-color);
+  padding: 1.5rem;
+  border-radius: var(--radius-lg);
+}
+
+.newsletter-card h4 {
+  font-family: var(--font-sans);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--secondary);
+  margin-bottom: 0.35rem;
+}
+
+.newsletter-card p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.newsletter-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+@media (min-width: 500px) {
+  .newsletter-form {
+    flex-direction: row;
+  }
+}
+
+.newsletter-form input {
+  flex-grow: 1;
+  padding: 0.65rem 1rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-color);
+  outline: none;
+  font-size: 0.88rem;
+}
+
+.newsletter-form input:focus {
+  border-color: var(--primary);
+}
+
+/* Form Card */
+.contact-form-card {
+  background: #ffffff;
+  padding: 2.25rem;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border-color);
+}
+
+.contact-form-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.4rem;
+}
+
+.form-sub {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-bottom: 1.75rem;
+}
+
+.form-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.field-group label {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--secondary);
+}
+
+.field-group input,
+.field-group select,
+.field-group textarea {
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  background: var(--bg-soft);
+  font-size: 0.92rem;
+  color: var(--text-main);
+  outline: none;
+  transition: var(--transition);
+}
+
+.field-group input:focus,
+.field-group select:focus,
+.field-group textarea:focus {
+  background: #ffffff;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(217, 72, 108, 0.15);
+}
+
+.submit-btn {
+  margin-top: 0.5rem;
+  width: 100%;
+  justify-content: center;
+  padding: 0.9rem;
+  font-size: 1rem;
+}
+
+.form-success-state {
+  text-align: center;
+  padding: 2.5rem 1rem;
+}
+
+.form-success-state .success-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.form-success-state h3 {
+  margin-bottom: 0.75rem;
+}
+
+.form-success-state p {
+  color: var(--text-muted);
+  margin-bottom: 1.75rem;
+  line-height: 1.6;
+}

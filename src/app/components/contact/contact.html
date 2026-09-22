@@ -1,0 +1,106 @@
+<section id="contact" class="contact-section">
+  <div class="container">
+    <div class="contact-grid">
+      <!-- Left Info & WhatsApp Action -->
+      <div class="contact-info-col">
+        <span class="section-tag">Atención Personalizada</span>
+        <h2 class="contact-title">¿Buscas un arreglo personalizado o corporativo?</h2>
+        <p class="contact-description">
+          Nuestros floristas certificados te asesoran en la combinación ideal de flores, paletas de color y mensajes dedicatorios para tus momentos más especiales.
+        </p>
+
+        <div class="contact-methods">
+          <div class="method-item">
+            <div class="method-icon-wrap">💬</div>
+            <div>
+              <strong>WhatsApp Directo</strong>
+              <span>+51 987 654 321 (Respuesta en 5 min)</span>
+            </div>
+          </div>
+
+          <div class="method-item">
+            <div class="method-icon-wrap">📍</div>
+            <div>
+              <strong>Atelier & Tienda Floral</strong>
+              <span>Av. Las Flores 1240, San Isidro</span>
+            </div>
+          </div>
+
+          <div class="method-item">
+            <div class="method-icon-wrap">⏰</div>
+            <div>
+              <strong>Horarios de Entrega</strong>
+              <span>Lunes a Domingo: 8:00 AM - 9:00 PM</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Newsletter Subscription Box -->
+        <div class="newsletter-card">
+          <h4>Únete al Club BellaRosa</h4>
+          <p>Recibe 15% de descuento en tu primera compra y guías de cuidado de flores.</p>
+          <form class="newsletter-form" (ngSubmit)="onSubscribeNewsletter()">
+            <input 
+              type="email" 
+              placeholder="Ingresa tu correo electrónico" 
+              [(ngModel)]="newsletterEmail" 
+              name="newsletterEmail" 
+              required
+            />
+            <button type="submit" class="btn-primary">Suscribirme</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Right Contact Form -->
+      <div class="contact-form-card">
+        <div *ngIf="!isSubmitted; else formSuccess">
+          <h3>Solicitar Cotización o Pedido Especial</h3>
+          <p class="form-sub">Completa los datos y un asesor se comunicará contigo.</p>
+
+          <form (ngSubmit)="onSubmit()" class="form-fields">
+            <div class="field-group">
+              <label for="name">Nombre Completo *</label>
+              <input type="text" id="name" name="name" [(ngModel)]="formData.name" placeholder="Ej. Mariana López" required />
+            </div>
+
+            <div class="field-group">
+              <label for="phone">Teléfono / WhatsApp *</label>
+              <input type="tel" id="phone" name="phone" [(ngModel)]="formData.phone" placeholder="Ej. 987 654 321" required />
+            </div>
+
+            <div class="field-group">
+              <label for="occasion">Ocasión</label>
+              <select id="occasion" name="occasion" [(ngModel)]="formData.occasion">
+                <option value="Cumpleaños">Cumpleaños</option>
+                <option value="Aniversario / Amor">Aniversario / Amor</option>
+                <option value="Agradecimiento">Agradecimiento</option>
+                <option value="Condolencias">Condolencias</option>
+                <option value="Boda o Evento">Boda o Evento</option>
+                <option value="Otro">Otro pedido personalizado</option>
+              </select>
+            </div>
+
+            <div class="field-group">
+              <label for="message">Detalles del Arreglo o Dedicatoria</label>
+              <textarea id="message" name="message" rows="4" [(ngModel)]="formData.message" placeholder="Flores preferidas, colores, fecha y hora de entrega..."></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary submit-btn">
+              Enviar Solicitud 💐
+            </button>
+          </form>
+        </div>
+
+        <ng-template #formSuccess>
+          <div class="form-success-state">
+            <span class="success-icon">💌</span>
+            <h3>¡Gracias por escribirnos!</h3>
+            <p>Hemos recibido tu solicitud para la ocasión <strong>{{ formData.occasion }}</strong>. Te responderemos en breve a través de WhatsApp o llamada telefónica.</p>
+            <button class="btn-outline" (click)="isSubmitted = false">Enviar otra consulta</button>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,251 @@
+.sunflower-hero {
+  min-height: 100vh;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5rem 0 3rem;
+}
+
+.sound-control-wrap {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 10;
+}
+
+.sound-pill-btn {
+  background: rgba(41, 24, 9, 0.7);
+  border: 1px solid var(--border-glass);
+  color: var(--text-gold);
+  padding: 0.5rem 1.1rem;
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: var(--transition);
+}
+
+.sound-pill-btn:hover {
+  background: rgba(245, 158, 11, 0.2);
+  border-color: var(--sun-gold);
+}
+
+.sound-pill-btn.playing {
+  background: rgba(245, 158, 11, 0.25);
+  border-color: var(--sun-gold);
+  box-shadow: 0 0 15px rgba(245, 158, 11, 0.35);
+}
+
+.hero-content-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .hero-content-grid {
+    grid-template-columns: 1fr 1.15fr;
+    gap: 4rem;
+  }
+}
+
+/* Sunflower SVG Display Stage */
+.sunflower-display-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding-top: 1rem;
+}
+
+.sunflower-svg-stage {
+  position: relative;
+  width: 100%;
+  max-width: 370px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sunflower-svg {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.6));
+  overflow: visible;
+}
+
+/* Animations for Stem, Leaves and Petals */
+.stem-path {
+  stroke-dasharray: 300;
+  stroke-dashoffset: 300;
+  transition: stroke-dashoffset 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.stem-path.grow-stem {
+  stroke-dashoffset: 0;
+}
+
+.leaf-group {
+  transform-origin: 0 0;
+  transform: scale(0);
+  transition: transform 0.9s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.leaf-group.unfurl {
+  transform: scale(1);
+}
+
+.flower-head-group {
+  transform-origin: 0 0;
+  transform: scale(0) rotate(-45deg);
+  transition: transform 1.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.flower-head-group.bloom {
+  transform: scale(1) rotate(0deg);
+  animation: gentleSway 6s ease-in-out infinite alternate;
+}
+
+@keyframes gentleSway {
+  0% { transform: scale(1) rotate(-3deg); }
+  100% { transform: scale(1) rotate(3deg); }
+}
+
+.petal-shape {
+  transform-origin: 0 0;
+  transition: transform 0.6s ease;
+}
+
+.bloom-action-bar {
+  margin-top: 1rem;
+}
+
+.replay-bloom-btn {
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid var(--border-glass);
+  color: var(--text-gold);
+  padding: 0.5rem 1.25rem;
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  backdrop-filter: blur(8px);
+  transition: var(--transition);
+}
+
+.replay-bloom-btn:hover {
+  background: rgba(245, 158, 11, 0.3);
+  transform: scale(1.05);
+}
+
+/* Right Card */
+.hero-text-card {
+  padding: 2.5rem;
+}
+
+@media (min-width: 768px) {
+  .hero-text-card {
+    padding: 3rem;
+  }
+}
+
+.sun-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 1rem;
+  border-radius: 9999px;
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  color: var(--text-gold);
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+}
+
+.hero-main-title {
+  font-size: 2.3rem;
+  line-height: 1.2;
+  margin-bottom: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .hero-main-title {
+    font-size: 3rem;
+  }
+}
+
+.hero-poem {
+  font-size: 1.6rem;
+  color: #fde68a;
+  line-height: 1.4;
+  margin-bottom: 1.5rem;
+}
+
+.hero-quote-box {
+  background: rgba(0, 0, 0, 0.3);
+  border-left: 3px solid var(--sun-gold);
+  padding: 1rem 1.25rem;
+  border-radius: 0 12px 12px 0;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.quote-symbol {
+  position: absolute;
+  top: -10px;
+  right: 15px;
+  font-size: 2rem;
+  color: rgba(245, 158, 11, 0.2);
+  line-height: 1;
+}
+
+.quote-text {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.hero-cta-wrap {
+  display: flex;
+}
+
+/* Scroll hint */
+.scroll-down-hint {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 3.5rem;
+  color: var(--text-gold);
+  font-size: 0.88rem;
+  cursor: pointer;
+  opacity: 0.85;
+  transition: var(--transition);
+}
+
+.scroll-down-hint:hover {
+  opacity: 1;
+  transform: translateY(2px);
+}
+
+.chevron-bounce {
+  font-size: 1.2rem;
+  animation: bounceDown 1.8s infinite;
+}
+
+@keyframes bounceDown {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(6px); }
+  60% { transform: translateY(3px); }
+}
