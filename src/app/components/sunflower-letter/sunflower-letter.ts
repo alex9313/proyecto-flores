@@ -12,11 +12,11 @@ export class SunflowerLetterComponent {
   readonly isOpen = signal<boolean>(false);
 
   // Puedes editar directamente estos textos aquí en el código:
-  readonly recipientName = 'Mi Persona Especial';
-  readonly letterMessage = `Si tuviera que elegir un solo instante para revivir eternamente, elegiría cualquier momento a tu lado. 
+  readonly recipientName = 'Mi amor,';
+  readonly letterMessage = `Hoy quise darte estas flores amarillas porque desde que estás en mi vida entendí de verdad lo que significa tener a alguien que ilumine todo alrededor. No se trata solo de cumplir con una fecha bonita o con una tradición; para mí es el pretexto perfecto para recordarte el lugar tan especial que ocupas en mi corazón. 
 
-Gracias por iluminar mis días con tu risa, por tu bondad sincera y por ser mi motivo favorito para sonreír. Que este campo de girasoles te recuerde siempre lo infinita, especial y hermosa que es tu luz en mi vida.`;
-  readonly signature = 'Con todo mi cariño';
+Eres esa calma que necesito en los días difíciles y la primera persona con la que quiero celebrar cualquier alegría. Me encanta la complicidad que tenemos, la forma en que nos entendemos y cómo cada momento a tu lado se siente auténtico y especial. Estas flores representan esa luz que traes a mi vida y, sobre todo, la promesa de seguir cuidando lo que tenemos, de acompañarte en cada paso y de elegirte todos los días.`;
+  readonly signature = 'Con todo mi amor. Te amo mucho';
 
   openLetter() {
     this.isOpen.set(true);

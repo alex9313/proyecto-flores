@@ -53,8 +53,8 @@ export class SunflowerTimelineComponent implements OnInit {
     {
       id: 4,
       badge: 'Razón 4 • Incondicional',
-      title: 'Un cariño que no conoce estaciones',
-      message: 'Las flores de este jardín digital no se marchitan jamás, al igual que el aprecio inmenso y el lugar tan especial que ocupas en mi corazón.',
+      title: 'Un amor que no conoce estaciones',
+      message: 'Las flores de este jardín digital no se marchitan jamás, al igual que el amor inmenso y el lugar tan especial que ocupas en mi corazón.',
       handwrittenNote: 'Siempre estaré para ti, hoy, mañana y siempre.',
       petalsColor: '#f59e0b',
       bloomed: false

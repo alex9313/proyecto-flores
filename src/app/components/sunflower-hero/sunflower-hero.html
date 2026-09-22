@@ -52,63 +52,55 @@
           <ellipse cx="200" cy="495" rx="55" ry="12" fill="#26180c" opacity="0.85" />
 
           <!-- Stem (grows upwards) -->
-          <path 
-            class="stem-path"
-            [class.grow-stem]="bloomProgress() >= 1"
-            d="M 200,490 Q 190,360 200,230" 
-            fill="none" 
-            stroke="url(#stemGrad)" 
-            stroke-width="12" 
-            stroke-linecap="round"
-          />
+          <path class="stem-path" [class.grow-stem]="bloomProgress() >= 1" d="M 200,490 Q 190,360 200,230" fill="none"
+            stroke="url(#stemGrad)" stroke-width="12" stroke-linecap="round" />
 
           <!-- Left Leaf -->
           <g class="leaf-group left-leaf" [class.unfurl]="bloomProgress() >= 2" transform="translate(194, 380)">
-            <path d="M 0,0 C -50,-15 -75,-60 -95,-35 C -75,-5 -30,20 0,0" fill="#15803d" stroke="#14532d" stroke-width="1.5" />
+            <path d="M 0,0 C -50,-15 -75,-60 -95,-35 C -75,-5 -30,20 0,0" fill="#15803d" stroke="#14532d"
+              stroke-width="1.5" />
             <path d="M 0,0 Q -45,-15 -85,-30" fill="none" stroke="#22c55e" stroke-width="1.5" opacity="0.6" />
           </g>
 
           <!-- Right Leaf -->
           <g class="leaf-group right-leaf" [class.unfurl]="bloomProgress() >= 2" transform="translate(196, 320)">
-            <path d="M 0,0 C 50,-15 80,-55 100,-30 C 80,-5 35,20 0,0" fill="#166534" stroke="#14532d" stroke-width="1.5" />
+            <path d="M 0,0 C 50,-15 80,-55 100,-30 C 80,-5 35,20 0,0" fill="#166534" stroke="#14532d"
+              stroke-width="1.5" />
             <path d="M 0,0 Q 45,-12 90,-25" fill="none" stroke="#22c55e" stroke-width="1.5" opacity="0.6" />
           </g>
 
           <!-- Sunflower Head Group (Centered at 200, 230) -->
           <g class="flower-head-group" [class.bloom]="bloomProgress() >= 3" transform="translate(200, 230)">
-            
+
             <!-- Radiant Golden Aura / Sun Glow -->
             <circle cx="0" cy="0" r="120" fill="rgba(245, 158, 11, 0.12)" filter="url(#goldGlow)" />
 
             <!-- Layer 1: Outer Golden Petals -->
             <g class="outer-petals-layer">
               <g *ngFor="let angle of outerPetals" [attr.transform]="'rotate(' + angle + ')'">
-                <path 
-                  class="petal-shape outer-petal"
-                  d="M 0,-38 C -16,-65 -16,-115 0,-125 C 16,-115 16,-65 0,-38" 
-                  fill="url(#petalGold)" 
-                />
+                <path class="petal-shape outer-petal" d="M 0,-38 C -16,-65 -16,-115 0,-125 C 16,-115 16,-65 0,-38"
+                  fill="url(#petalGold)" />
               </g>
             </g>
 
             <!-- Layer 2: Inner Amber Petals -->
             <g class="inner-petals-layer">
               <g *ngFor="let angle of innerPetals" [attr.transform]="'rotate(' + angle + ')'">
-                <path 
-                  class="petal-shape inner-petal"
-                  d="M 0,-34 C -13,-55 -13,-98 0,-106 C 13,-98 13,-55 0,-34" 
-                  fill="url(#innerPetalGold)" 
-                />
+                <path class="petal-shape inner-petal" d="M 0,-34 C -13,-55 -13,-98 0,-106 C 13,-98 13,-55 0,-34"
+                  fill="url(#innerPetalGold)" />
               </g>
             </g>
 
             <!-- Center Seed Core Disk with Radiant Texture -->
             <circle cx="0" cy="0" r="42" fill="url(#centerDisk)" stroke="#f59e0b" stroke-width="2" />
-            
+
             <!-- Seed Pattern Rings -->
-            <circle cx="0" cy="0" r="32" fill="none" stroke="#d97706" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.7" />
-            <circle cx="0" cy="0" r="22" fill="none" stroke="#b45309" stroke-width="1.5" stroke-dasharray="2 3" opacity="0.8" />
-            <circle cx="0" cy="0" r="12" fill="none" stroke="#fcd34d" stroke-width="1.5" stroke-dasharray="2 2" opacity="0.6" />
+            <circle cx="0" cy="0" r="32" fill="none" stroke="#d97706" stroke-width="1.5" stroke-dasharray="3 3"
+              opacity="0.7" />
+            <circle cx="0" cy="0" r="22" fill="none" stroke="#b45309" stroke-width="1.5" stroke-dasharray="2 3"
+              opacity="0.8" />
+            <circle cx="0" cy="0" r="12" fill="none" stroke="#fcd34d" stroke-width="1.5" stroke-dasharray="2 2"
+              opacity="0.6" />
             <circle cx="0" cy="0" r="3" fill="#fef08a" opacity="0.9" />
           </g>
         </svg>
@@ -126,7 +118,7 @@
     <!-- Right / Bottom: Romantic Message Dedication -->
     <div class="hero-text-card glass-panel">
       <div class="sun-tag">
-        <span>🌻 Dedicado a Alguien Único</span>
+        <span>🌻 Dedicado a mi personal especial</span>
       </div>
 
       <h1 class="hero-main-title">
@@ -134,13 +126,15 @@
       </h1>
 
       <p class="hero-poem font-hand">
-        "En un campo infinito, el girasol no busca cualquier sombra: siempre eleva su mirada hacia la luz más pura. Así es como mi corazón encuentra su calma y su alegría en tu sonrisa."
+        "En un campo infinito, el girasol no busca cualquier sombra: siempre eleva su mirada hacia la luz más pura. Así
+        es como mi corazón encuentra su calma y su alegría en tu sonrisa."
       </p>
 
       <div class="hero-quote-box">
         <span class="quote-symbol">❝</span>
         <p class="quote-text">
-          Cada día a tu lado es una nueva primavera. Esta página florece en tu honor para recordarte lo brillante, especial e importante que eres.
+          Cada día a tu lado es una nueva primavera. Esta página florece en tu honor para recordarte lo brillante,
+          especial e importante que eres.
         </p>
       </div>
 
